@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.darsh.multipleimageselect.R;
 import com.darsh.multipleimageselect.models.Album;
 
@@ -43,8 +44,8 @@ public class CustomAlbumSelectAdapter extends CustomGenericAdapter<Album> {
         viewHolder.textView.setText(arrayList.get(position).name);
         Glide.with(context)
                 .load(arrayList.get(position).cover)
-                .placeholder(R.drawable.image_placeholder).centerCrop().into(viewHolder.imageView);
-
+                .apply(new RequestOptions().placeholder(R.drawable.image_placeholder).centerCrop())
+                .into(viewHolder.imageView);
         return convertView;
     }
 
